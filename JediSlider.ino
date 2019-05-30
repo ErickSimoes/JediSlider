@@ -1,3 +1,4 @@
+#include <Keyboard.h>
 #include <Ultrasonic.h>
 
 Ultrasonic ultrasonic(12, 13);
@@ -10,7 +11,7 @@ const short distanceBack = 5;
 const short distanceNext = 30;
 
 void setup() {
-  Serial.begin(9600);
+  Keyboard.begin();
   pinMode(enableButton, INPUT_PULLUP);
 }
 
@@ -19,11 +20,15 @@ void loop() {
     distance = ultrasonic.read();
 
     if (distance >= distanceNext - range && distance <= distanceNext + range) {
-      Serial.println("Next slide");
+      Keyboard.press(KEY_RIGHT_ARROW);
+      Keyboard.releaseAll();
+      delay(1000);
     }
 
     if (distance >= distanceBack - range && distance <= distanceBack + range) {
-      Serial.println("Back slide");
+      Keyboard.press(KEY_LEFT_ARROW);
+      Keyboard.releaseAll();
+      delay(1000);
     }
   }
 
