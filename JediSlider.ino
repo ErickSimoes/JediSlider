@@ -1,5 +1,5 @@
 #include <Keyboard.h>
-#include <Ultrasonic.h>
+#include <Ultrasonic.h> //Get this library here: https://github.com/ErickSimoes/Ultrasonic
 
 Ultrasonic ultrasonic(12, 13);
 unsigned short distance;
